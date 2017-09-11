@@ -1,6 +1,6 @@
 "use strict";
 
-const app = angular.module("RemoteApp", ["ngRoute"]);
+const app = angular.module("RemoteApp", ["ngRoute", "chart.js"]);
 
 app.config(($routeProvider) => {
 	$routeProvider
