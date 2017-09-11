@@ -1,0 +1,34 @@
+.navbarList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #65C36E; }
+
+.navbarItems {
+  float: left; }
+
+.navbarItems a {
+  display: block;
+  color: #764657;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none; }
+
+.navbarItems a:hover {
+  background-color: #327638; }
+
+.homeNavbarList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 25%;
+  background-color: #f1f1f1;
+  height: 100%;
+  /* Full height */
+  position: fixed;
+  /* Make it stick, even on scroll */
+  overflow: auto;
+  /* Enable scrolling if the sidenav has too much content */ }
+
+/*# sourceMappingURL=main.css.map */
