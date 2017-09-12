@@ -31,4 +31,8 @@
   overflow: auto;
   /* Enable scrolling if the sidenav has too much content */ }
 
+.stopwatch {
+  padding-top: 0px;
+  padding-left: 15px; }
+
 /*# sourceMappingURL=main.css.map */

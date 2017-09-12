@@ -3,3 +3,8 @@
         <li class="navbarItems"><a ng-href="#!/home1">Home</a></li>
         <li class="navbarItems"><a ng-href="#!/graph">Graph</a></li>
     </ul>
+    <!-- Put video or picture here -->
+    <label>Timer: {{timerWithTimeout | hhmmss}}</label>
+    <button ng-click="startTimerWithTimeout()">Start Timer</button>
+    <button ng-click="resetTimerWithTimeout()">Stop Timer</button>
+    
