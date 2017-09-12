@@ -3,6 +3,8 @@
 app.controller("exerciseCtrl", function($scope, $routeParams, $interval, $timeout){
     
     $scope.timerWithTimeout = 0;
+    $scope.stopped = false;
+
     $scope.startTimerWithTimeout = function() {
      $scope.timerWithTimeout = 0;
      if($scope.myTimeout){
@@ -18,6 +20,11 @@ app.controller("exerciseCtrl", function($scope, $routeParams, $interval, $timeou
    $scope.resetTimerWithTimeout = function(){
      $scope.timerWithTimeout = 0;
      $timeout.cancel($scope.myTimeout);
+   };
+
+   $scope.stopTimerWithTimeout = function(){
+        $scope.stopped = true;
+        $timeout.cancel($scope.myTimeout);
    };
    
    //timer with interval
