@@ -2,6 +2,20 @@
 
 const app = angular.module("RemoteApp", ["ngRoute", "chart.js"]);
 
+let isAuth = (userFactory) => new Promise ( (resolve, reject) => {
+    console.log("userFactory is", userFactory);
+    userFactory.isAuthenticated()
+    .then( (userExists) => {
+      if(userExists){
+        console.log("Authenticated, go ahead");
+        resolve();
+      }else {
+        console.log("Authentication reject, GO AWAY");
+        reject();
+      }
+    });
+  });
+
 app.config(($routeProvider) => {
 	$routeProvider
 	.when('/', {
@@ -10,16 +24,33 @@ app.config(($routeProvider) => {
     })
     .when('/home1', {
 		templateUrl: 'partials/home.html',
-        controller: 'homeCtrl'
+        controller: 'homeCtrl',
+        resolve: {isAuth}        
     })
     .when('/exercises', {
 		templateUrl: 'partials/exercise123.html',
-        controller: 'exerciseCtrl'
+        controller: 'exerciseCtrl',
+        resolve: {isAuth}        
     })
     .when('/graph', {
 		templateUrl: 'partials/graph.html',
-        controller: 'graphCtrl'
+        controller: 'graphCtrl',
+        resolve: {isAuth}        
     })
     
-	.otherwise('/');
+    .otherwise('/');
+});
+    app.run(($location, FBCreds) => {
+        let creds = FBCreds;
+        let authConfig = {
+            apiKey: creds.apiKey,
+            authDomain: creds.authDomain,
+            databaseURL: creds.databaseURL
+        };
+    
+        firebase.initializeApp(authConfig);
+    });
+    
+    app.run(function($rootScope) {
+        $rootScope.showSearch = false;
 });
