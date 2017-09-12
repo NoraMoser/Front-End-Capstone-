@@ -32,4 +32,8 @@ app.controller("graphCtrl", function($scope, $routeParams){
         ]
       }
     };
+
+    const overallGraph = function(){
+        
+    };
   });

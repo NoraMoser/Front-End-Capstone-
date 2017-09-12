@@ -1,7 +1,27 @@
 'use strict';
 
-app.controller("exerciseCtrl", function($scope, $routeParams, $interval, $timeout){
+app.controller("exerciseCtrl", function(trialFactory, $location, $scope, $routeParams, $interval, $timeout, userFactory){
     
+
+  $scope.submitButtonText = "Save Data";
+  let user = userFactory.getCurrentUser();
+
+  $scope.task = {
+      time: "",
+      date: ""
+  };
+
+  $scope.submitTime = function(){
+    $scope.task.time = $scope.timerWithTimeout;
+    console.log("object:", $scope.timerWithTimeout);
+      console.log("hello there");
+      trialFactory.addTime($scope.task)
+      .then((data) => {
+          $location.url("/exercises");
+      });
+  };
+
+
     $scope.timerWithTimeout = 0;
     $scope.stopped = false;
 
@@ -9,23 +29,38 @@ app.controller("exerciseCtrl", function($scope, $routeParams, $interval, $timeou
      $scope.timerWithTimeout = 0;
      if($scope.myTimeout){
        $timeout.cancel($scope.myTimeout);
-     }
-     $scope.onTimeout = function(){
-         $scope.timerWithTimeout++;
-         $scope.myTimeout = $timeout($scope.onTimeout);
-     };
-     $scope.myTimeout = $timeout($scope.onTimeout);
-   };
-   
-   $scope.resetTimerWithTimeout = function(){
-     $scope.timerWithTimeout = 0;
-     $timeout.cancel($scope.myTimeout);
-   };
-
-   $scope.stopTimerWithTimeout = function(){
-        $scope.stopped = true;
-        $timeout.cancel($scope.myTimeout);
-   };
+      }
+      $scope.onTimeout = function(){
+        $scope.timerWithTimeout++;
+        $scope.myTimeout = $timeout($scope.onTimeout);
+      };
+      $scope.myTimeout = $timeout($scope.onTimeout);
+    };
+    
+    $scope.resetTimerWithTimeout = function(){
+      $scope.timerWithTimeout = 0;
+      $timeout.cancel($scope.myTimeout);
+    };
+    
+    $scope.stopTimerWithTimeout = function(){
+      $scope.stopped = true;
+      $timeout.cancel($scope.myTimeout);
+      console.log("myTimeout", $scope.myTimeout.valueOf());
+      // console.log($timeout.val);
+      let time = $scope.timerWithTimeout;
+      var sec_num = parseInt(time, 10); // don't forget the second param
+      var hours   = Math.floor(sec_num / 3600);
+      var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+      var seconds = sec_num - (hours * 3600) - (minutes * 60);
+    
+      if (hours   < 10) {hours   = "0"+hours;}
+      if (minutes < 10) {minutes = "0"+minutes;}
+      if (seconds < 10) {seconds = "0"+seconds;}
+      time = hours+':'+minutes+':'+seconds;
+      console.log("timer value", time);
+      console.log("other timer value", $scope.timerWithTimeout);
+    };
+    console.log($scope.timerWithTimeout.value);
    
    //timer with interval
 //    $scope.timerWithInterval = 0;
@@ -45,6 +80,7 @@ app.controller("exerciseCtrl", function($scope, $routeParams, $interval, $timeou
      $interval.cancel($scope.myInterval);
    };
  });
+
  app.filter('hhmmss', function () {
    return function (time) {
      var sec_num = parseInt(time, 10); // don't forget the second param
@@ -58,4 +94,5 @@ app.controller("exerciseCtrl", function($scope, $routeParams, $interval, $timeou
      time = hours+':'+minutes+':'+seconds;
      return time;
    };
+   
  });
