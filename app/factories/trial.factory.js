@@ -1,8 +1,7 @@
 "use strict";
 
-app.factory("trialFactory", function($q, $http, FBCreds){
+app.factory("trialFactory", function($q, $http, FBCreds, userFactory){
 
-    var arrayValues = [];
     
 
     const addTime = function(obj){
@@ -10,17 +9,20 @@ app.factory("trialFactory", function($q, $http, FBCreds){
         return $http.post(`${FBCreds.databaseURL}/graph.json`, newObj);
         
     };
-    const setValues = function(value){
-        arrayValues = value;
-        console.log("factory array:", arrayValues);
-    };
 
-    const getValues = function(value){
-        return arrayValues;
+    var user = userFactory.getCurrentUser();
+
+    const getTimes = function(obj){
+       return Object.keys(obj).map(key => obj[key].time);   
+       //return a new array with just times   
     };
-    // const getValues = function(){
-    //     return values;
-    // };
-    // Get and Set
-    return {setValues, addTime, getValues};
+    
+    const getDBValues = function(){
+        return $q (( resolve, reject) => {
+            $http.get(`${FBCreds.databaseURL}/graph.json`)
+            .then(graph => resolve(getTimes(graph.data)));
+        });
+    };
+    
+    return { addTime, getDBValues};
 });

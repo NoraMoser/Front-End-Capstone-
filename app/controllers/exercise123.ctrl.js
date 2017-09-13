@@ -8,22 +8,17 @@ app.controller("exerciseCtrl", function(trialFactory, $location, $scope, $routeP
 
   $scope.task = {
       time: "",
-      date: ""
+      date: "",
+      uid: user
   };
   
-  var arrayValues = [];
+  // var arrayValues = [];
   $scope.submitTime = function(){
     $scope.task.time = $scope.timerWithTimeout;
-    console.log("object:", $scope.timerWithTimeout);
-      console.log("hello there");
       trialFactory.addTime($scope.task)
-      .then((data) => {
+      .then(() => {
           $location.url("/exercises");
       });
-      arrayValues.push($scope.timerWithTimeout);
-      console.log("arrayValues", arrayValues);
-      trialFactory.setValues(arrayValues);
-      return arrayValues;
     };
     
     
@@ -66,7 +61,7 @@ app.controller("exerciseCtrl", function(trialFactory, $location, $scope, $routeP
       console.log("timer value", time);
       console.log("other timer value", $scope.timerWithTimeout);
     };
-    console.log($scope.timerWithTimeout.value);
+    // console.log($scope.timerWithTimeout.value);
    
    //timer with interval
 //    $scope.timerWithInterval = 0;
