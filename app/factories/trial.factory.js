@@ -2,17 +2,25 @@
 
 app.factory("trialFactory", function($q, $http, FBCreds){
 
+    var arrayValues = [];
+    
+
     const addTime = function(obj){
         let newObj = JSON.stringify(obj);
         return $http.post(`${FBCreds.databaseURL}/graph.json`, newObj);
-        // .then( (data) => {
-        //     return data;
-        // }, (error) => {
-        //     let errorCode = error.code;
-        //     let errorMessage = error.message;
-        //     console.log("error", errorCode, errorMessage);
-        // });
+        
+    };
+    const setValues = function(value){
+        arrayValues = value;
+        console.log("factory array:", arrayValues);
     };
 
-    return {addTime};
+    const getValues = function(value){
+        return arrayValues;
+    };
+    // const getValues = function(){
+    //     return values;
+    // };
+    // Get and Set
+    return {setValues, addTime, getValues};
 });

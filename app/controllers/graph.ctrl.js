@@ -1,14 +1,24 @@
 'use strict';
 
 
-app.controller("graphCtrl", function($scope, $routeParams){
+app.controller("graphCtrl", function($scope, $routeParams, trialFactory){
+
+    var array = trialFactory.getValues();
+    
+    
+    $scope.task = {
+        time: "",
+        date: ""
+    };
+    
     
 
     $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
     $scope.series = ['Series A', 'Series B'];
     $scope.data = [
-      [65, 59, 80, 81, 56, 55, 40],
-      [28, 48, 40, 19, 86, 27, 90]
+      array
+    //   [28, 48, 40, 19, 86, 27, 90],
+    //   [34, 56, 75, 57, 89, 78, 65]
     ];
     $scope.onClick = function (points, evt) {
       console.log(points, evt);
@@ -34,6 +44,8 @@ app.controller("graphCtrl", function($scope, $routeParams){
     };
 
     const overallGraph = function(){
-        
+
     };
+
+    
   });

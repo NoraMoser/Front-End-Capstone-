@@ -10,7 +10,8 @@ app.controller("exerciseCtrl", function(trialFactory, $location, $scope, $routeP
       time: "",
       date: ""
   };
-
+  
+  var arrayValues = [];
   $scope.submitTime = function(){
     $scope.task.time = $scope.timerWithTimeout;
     console.log("object:", $scope.timerWithTimeout);
@@ -19,16 +20,20 @@ app.controller("exerciseCtrl", function(trialFactory, $location, $scope, $routeP
       .then((data) => {
           $location.url("/exercises");
       });
-  };
-
-
+      arrayValues.push($scope.timerWithTimeout);
+      console.log("arrayValues", arrayValues);
+      trialFactory.setValues(arrayValues);
+      return arrayValues;
+    };
+    
+    
     $scope.timerWithTimeout = 0;
     $scope.stopped = false;
-
+    
     $scope.startTimerWithTimeout = function() {
-     $scope.timerWithTimeout = 0;
-     if($scope.myTimeout){
-       $timeout.cancel($scope.myTimeout);
+      $scope.timerWithTimeout = 0;
+      if($scope.myTimeout){
+        $timeout.cancel($scope.myTimeout);
       }
       $scope.onTimeout = function(){
         $scope.timerWithTimeout++;
@@ -40,6 +45,7 @@ app.controller("exerciseCtrl", function(trialFactory, $location, $scope, $routeP
     $scope.resetTimerWithTimeout = function(){
       $scope.timerWithTimeout = 0;
       $timeout.cancel($scope.myTimeout);
+      
     };
     
     $scope.stopTimerWithTimeout = function(){
