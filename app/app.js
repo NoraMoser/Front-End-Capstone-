@@ -28,7 +28,7 @@ app.config(($routeProvider) => {
         resolve: {isAuth}        
     })
     .when('/exercises', {
-		templateUrl: 'partials/exercise123.html',
+		templateUrl: 'partials/exercise1.html',
         controller: 'exerciseCtrl',
         resolve: {isAuth}        
     })
@@ -36,6 +36,11 @@ app.config(($routeProvider) => {
 		templateUrl: 'partials/graph.html',
         controller: 'graphCtrl',
         resolve: {isAuth}        
+    })
+    .when('/exercise2/:id', {
+        templateUrl: 'partials/exercise2.html',
+        controller: 'editCtrl',
+        resolve: {isAuth}
     })
     
     .otherwise('/');

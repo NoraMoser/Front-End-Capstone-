@@ -41,6 +41,7 @@ app.controller("graphCtrl", function($scope, $routeParams, trialFactory, userFac
     trialFactory.getDBValues()
     .then(times => $scope.data.push(times));
     
-
+    trialFactory.getDBValues2()
+    .then(times2 => $scope.data.push(times2));
     
   });

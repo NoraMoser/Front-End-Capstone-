@@ -1,39 +1,26 @@
 'use strict';
 
-app.controller("exerciseCtrl", function(trialFactory, $location, $scope, $routeParams, $interval, $timeout, userFactory){
-    
+app.controller("editCtrl", function($scope, $location, $routeParams, trialFactory, $interval, $timeout) {
 
-  $scope.submitButtonText = "Save Data";
-  let user = userFactory.getCurrentUser();
+    $scope.task = "";
 
+    $scope.scopeEditTime = function(){
+        trialFactory.getSingleTime($routeParams.id)
+        .then((data) => {
+            $scope.task = data;
+            console.log("singletime", data);
+        });
+    }();
 
-  $scope.task = {
-      time: "",
-      time2: "",
-      date: "",
-      uid: user
-  };
-// $scope.currentKey = "";
-  // var time1 = [];
-  // var arrayValues = [];
-  $scope.submitTime = function(){
-    // trialFactory.getAllTimes();
-    // time1 = $scope.timerWithTimeout;
-    $scope.task.time = $scope.timerWithTimeout;
-     trialFactory.addTime($scope.task)
-      .then((data) => {
-        $scope.task.id = data.data.name;
-        trialFactory.editTime(data.data.name, $scope.task);
-          $location.path("/exercises");
-      });
-    //  $scope.currentKey = $scope.task.time2;
-    };
+    $scope.submitTime2 = function(){
+        $scope.task.time2 = $scope.timerWithTimeout;
+        trialFactory.editTime($scope.task.id, $scope.task)
+        .then((data) => {
+          console.log("data", data);  
+        });
+      };
 
-    
-
-    
-    
-    
+        
     $scope.timerWithTimeout = 0;
     $scope.stopped = false;
     
