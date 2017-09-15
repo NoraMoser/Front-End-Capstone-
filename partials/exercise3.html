@@ -3,7 +3,15 @@
         <li class="navbarItems"><a ng-href="#!/home1">Home</a></li>
         <li class="navbarItems"><a ng-href="#!/graph">Graph</a></li>
     </ul>
-    <!-- Put video or picture here -->
+    <video width="400" controls>
+        <source src="trialvid3.mp4" type="video/mp4">
+      </video>
+      <br>
+      <br>
+      <p>Stand on your dominant foot for as long as you can without any help.  Time your process.</p>
+      <br>
+      <br>
+      <hr>
     <label>Timer: {{timerWithTimeout | hhmmss}}</label>
     <button ng-click="startTimerWithTimeout()">Start Timer</button>
     <button ng-click="stopTimerWithTimeout()">Stop Timer</button>    

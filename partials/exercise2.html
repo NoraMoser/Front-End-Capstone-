@@ -3,7 +3,15 @@
         <li class="navbarItems"><a ng-href="#!/home1">Home</a></li>
         <li class="navbarItems"><a ng-href="#!/graph">Graph</a></li>
     </ul>
-    <!-- Put video or picture here -->
+    <video width="400" controls>
+        <source src="trialvid2.mp4" type="video/mp4">
+      </video>
+      <br>
+      <br>
+      <p>Begin with your right heel against your left knee cap.  Run your heel down your shin bone as quickly as you can without deviation. Time your process.</p>
+      <br>
+      <br>
+      <hr>
     <label>Timer: {{timerWithTimeout | hhmmss}}</label>
     <button ng-click="startTimerWithTimeout()">Start Timer</button>
     <button ng-click="stopTimerWithTimeout()">Stop Timer</button>    
