@@ -6,13 +6,9 @@ app.controller("graphCtrl", function($scope, $routeParams, trialFactory, userFac
     var user = userFactory.getCurrentUser();
     
     
-    $scope.task = {
-        time: "",
-        date: "",
-        uid: user
-    };
+    $scope.task = {};
     
-    $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+    $scope.labels = ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5", "Week 6", "Week 7"];
     $scope.series = ['Series A', 'Series B'];
     $scope.data = [];
     $scope.onClick = function (points, evt) {
@@ -43,5 +39,8 @@ app.controller("graphCtrl", function($scope, $routeParams, trialFactory, userFac
     
     trialFactory.getDBValues2()
     .then(times2 => $scope.data.push(times2));
+
+    trialFactory.getDBValues2()
+    .then(times3 => $scope.data.push(times3));
     
   });

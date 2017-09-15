@@ -10,6 +10,7 @@ app.controller("exerciseCtrl", function(trialFactory, $location, $scope, $routeP
   $scope.task = {
       time: "",
       time2: "",
+      time3: "",
       date: "",
       uid: user
   };

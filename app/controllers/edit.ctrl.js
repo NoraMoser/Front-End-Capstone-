@@ -16,7 +16,15 @@ app.controller("editCtrl", function($scope, $location, $routeParams, trialFactor
         $scope.task.time2 = $scope.timerWithTimeout;
         trialFactory.editTime($scope.task.id, $scope.task)
         .then((data) => {
-          console.log("data", data);  
+        //   console.log("data", data);  
+        });
+      };
+
+      $scope.submitTime3 = function(){
+        $scope.task.time3 = $scope.timerWithTimeout;
+        trialFactory.editTime($scope.task.id, $scope.task)
+        .then((data) => {
+          console.log("data for three", data);  
         });
       };
 

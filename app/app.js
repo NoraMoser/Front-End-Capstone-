@@ -42,6 +42,11 @@ app.config(($routeProvider) => {
         controller: 'editCtrl',
         resolve: {isAuth}
     })
+    .when('/exercise3/:id', {
+        templateUrl: 'partials/exercise3.html',
+        controller: 'editCtrl',
+        resolve: {isAuth}
+    })
     
     .otherwise('/');
 });

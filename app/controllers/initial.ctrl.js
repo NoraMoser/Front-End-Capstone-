@@ -26,7 +26,7 @@ app.controller("initialCtrl", function($scope, $routeParams, $window, $location,
             .then( (result) =>{
                 let user = result.user.uid;
                 $location.path("/task-list");
-                $scope.apply();
+                // $scope.apply();
             }).catch( (error) => {
                 console.log("error with google login");
                 let errorCode = error.code;
