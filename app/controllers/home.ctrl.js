@@ -19,5 +19,12 @@ app.controller("homeCtrl", function($scope, $routeParams, userFactory, $window){
       $window.location.href = "#!/login";
     }
   });
+  $scope.userDeets = [];
+  let getThoseDeets = function(){
+       let pulledInfo = userFactory.getUserDeets();
+       $scope.userDeets = pulledInfo.splice(0,1);
+       console.log("pulled info", pulledInfo);
+       console.log("user deets", $scope.userDeets);
+  }();
 
     });

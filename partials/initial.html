@@ -1,8 +1,8 @@
 <h1 class="initialHeader">Remote Trial</h1>
 <ul class="navbarList">
         <li class="navbarItems"><a ng-href="#!/home1">Home</a></li>
-        <li class="navbarItems"><a ng-href="#!/exercises">Exercises</a></li>
-        <li class="navbarItems"><a ng-href="#!/graph">Graph</a></li>
-        <li class="navbarItems"><a ng-href="#!/pdf">Download PDF</a></li>    
+        <li ng-show="isLoggedIn"class="navbarItems"><a ng-href="#!/exercises">Exercises</a></li>
+        <li ng-show="isLoggedIn"class="navbarItems"><a ng-href="#!/graph">Graph</a></li>
+        <li ng-show="isLoggedIn"class="navbarItems"><a ng-href="#!/pdf">Download PDF</a></li>    
     </ul>
 <button ng-click="loginGoogle()" ng-href="#!/home1" class="googleLogin">Login with Google</button>

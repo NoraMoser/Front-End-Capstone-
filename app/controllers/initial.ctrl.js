@@ -18,6 +18,8 @@ app.controller("initialCtrl", function($scope, $routeParams, $window, $location,
             console.log("error occured on logout");
           });
         };
+
+        
   
           $scope.loginGoogle = () => {
             console.log("you clicked on google login");
@@ -25,7 +27,7 @@ app.controller("initialCtrl", function($scope, $routeParams, $window, $location,
             userFactory.authWithProvider()
             .then( (result) =>{
                 let user = result.user.uid;
-                $location.path("/task-list");
+                $window.location.href = "#!/home1";
                 // $scope.apply();
             }).catch( (error) => {
                 console.log("error with google login");
@@ -33,7 +35,26 @@ app.controller("initialCtrl", function($scope, $routeParams, $window, $location,
                 let errorMessage = error.message;
                 console.log("errors", errorCode, errorMessage);
             });
-        };
-    
 
+            $scope.isLoggedIn = false;
+            $scope.logout = () => {
+                userFactory.logOut();
+              };
+        
+          firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              $scope.isLoggedIn = true;
+              console.log("currentUser logged in?", user);
+              console.log("logged in t-f", $scope.isLoggedIn );
+              $scope.$apply();
+            } else {
+              $scope.isLoggedIn = false;
+              console.log("user logged in?", $scope.isLoggedIn);
+              $window.location.href = "#!/login";
+            }
+          });
+        };
+        
+    
+        
 });
