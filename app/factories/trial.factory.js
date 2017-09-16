@@ -93,6 +93,19 @@ app.factory("trialFactory", function($q, $http, FBCreds, userFactory){
              .then(graph => resolve(getTimes2(graph.data)));
          });
      };
+
+     const getTimes3 = function(obj){
+        return Object.keys(obj).map(key => obj[key].time3);   
+        //return a new array with just times   
+     };
+     
+     const getDBValues3 = function(){
+         return $q (( resolve, reject) => {
+             $http.get(`${FBCreds.databaseURL}/graph.json`)
+             .then(graph => resolve(getTimes3(graph.data)));
+         });
+     };
+     
     
-    return { addTime, getDBValues, getDBValues2, editTime, getAllTimes, getSingleTime};
+    return { addTime, getDBValues, getDBValues2, editTime, getAllTimes, getSingleTime, getDBValues3, getTimes3};
 });
