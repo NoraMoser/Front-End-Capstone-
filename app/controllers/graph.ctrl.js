@@ -42,5 +42,11 @@ app.controller("graphCtrl", function($scope, $routeParams, trialFactory, userFac
 
     trialFactory.getDBValues2()
     .then(times3 => $scope.data.push(times3));
-    
+    console.log("times arrays on graph ctrl", $scope.data);
+
+    $scope.downloadPDF = () => {
+        var docDefinition = { content: 'This is an sample PDF printed with pdfMake' };
+    pdfMake.createPdf(docDefinition).download('optionalName.pdf');
+};
+
   });
