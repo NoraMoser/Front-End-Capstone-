@@ -11,6 +11,7 @@ app.controller("exerciseCtrl", function(trialFactory, $location, $scope, $routeP
       time: "",
       time2: "",
       time3: "",
+      notes: "",
       date: "",
       uid: user
   };
@@ -29,6 +30,8 @@ app.controller("exerciseCtrl", function(trialFactory, $location, $scope, $routeP
       });
     //  $scope.currentKey = $scope.task.time2;
     };
+
+    
 
     
 
@@ -59,7 +62,7 @@ app.controller("exerciseCtrl", function(trialFactory, $location, $scope, $routeP
     $scope.stopTimerWithTimeout = function(){
       $scope.stopped = true;
       $timeout.cancel($scope.myTimeout);
-      console.log("myTimeout", $scope.myTimeout.valueOf());
+      // console.log("myTimeout", $scope.myTimeout.valueOf());
       // console.log($timeout.val);
       let time = $scope.timerWithTimeout;
       var sec_num = parseInt(time, 10); // don't forget the second param

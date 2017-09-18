@@ -11,10 +11,12 @@ app.controller("graphCtrl", function($scope, $routeParams, trialFactory, userFac
     $scope.labels = ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5", "Week 6", "Week 7"];
     $scope.series = ['Series A', 'Series B'];
     $scope.data = [];
+    $scope.colours = [ 'yellow', 'purple', 'green'  ];
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
-    $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+    $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }];
+    
     $scope.options = {
         scales: {
             yAxes: [
@@ -24,17 +26,12 @@ app.controller("graphCtrl", function($scope, $routeParams, trialFactory, userFac
                     display: true,
                     position: 'left'
                 },
-                {
-                    id: 'y-axis-2',
-                    type: 'linear',
-                    display: true,
-                    position: 'right'
-                }
+               
             ]
         }
     };
     
-   let num1 = trialFactory.getDBValues()
+   trialFactory.getDBValues()
     .then(times => $scope.data.push(times));
     
     trialFactory.getDBValues2()
@@ -43,6 +40,11 @@ app.controller("graphCtrl", function($scope, $routeParams, trialFactory, userFac
     trialFactory.getDBValues3()
     .then(times3 => $scope.data.push(times3));
     console.log("times arrays on graph ctrl", $scope.data);
+
+    $scope.notes = [];
+    trialFactory.getDBNotes()
+    .then(notes => $scope.notes.push(notes));
+    console.log("scope.notes", $scope.notes);
 
     $scope.downloadPDF = () => {
         var docDefinition = {
@@ -59,7 +61,15 @@ app.controller("graphCtrl", function($scope, $routeParams, trialFactory, userFac
                   body: $scope.data
                 }
             },
-            { text: '* Row 1 is excersize 1, row 2 is exercise 2, and row 3 is exercise 3 *', fontSize: 15 }
+            { text: '* Row 1 is exercise 1, row 2 is exercise 2, and row 3 is exercise 3 *', fontSize: 15 },
+            
+            { text: 'Notes Section', bold: true, fontSize: 25},
+
+            
+                  $scope.notes
+                
+            
+            
         ]
     };
     
