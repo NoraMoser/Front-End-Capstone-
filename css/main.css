@@ -1,8 +1,18 @@
 h1, h2, h3, h4, h5, p {
-  font-family: "Philosopher", sans-serif; }
+  font-family: "Philosopher", sans-serif;
+  text-align: center; }
+
+.headingDiv {
+  margin: 0;
+  background-color: #764657;
+  height: 100px;
+  color: white; }
 
 body {
   background-color: lightgray; }
+
+.headerStuff {
+  padding: 2%; }
 
 .initialHeader {
   text-align: center;
@@ -79,7 +89,7 @@ body {
   height: 200px;
   width: 200px;
   border-radius: 30%;
-  box-shadow: 3px 1px 1px black; }
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4); }
 
 .userDeets {
   color: #764657; }
@@ -87,5 +97,79 @@ body {
 .stopwatch {
   padding-top: 0px;
   padding-left: 15px; }
+
+.video {
+  margin-left: 44%;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
+  height: 300px; }
+
+.saveButton {
+  height: 60px;
+  width: 100px;
+  margin-left: 46%;
+  background-color: #764657;
+  color: white;
+  font-size: 1em;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4); }
+
+.timer {
+  text-align: center; }
+
+.actualTimer {
+  font-size: 2em;
+  font-family: "Philosopher", sans-serif;
+  color: #327638; }
+
+.timerButtons {
+  font-family: "Philosopher", sans-serif;
+  color: #764657;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+  margin-bottom: 1%; }
+
+.nextLink {
+  color: #65C36E;
+  font-size: 2em;
+  margin-left: 5%;
+  text-decoration: none; }
+
+.textArea {
+  margin-left: 35%; }
+
+.textButtons {
+  display: block; }
+
+.submitButton {
+  height: 60px;
+  width: 100px;
+  background-color: #764657;
+  color: white;
+  font-size: 1em;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4); }
+
+.saveNotesButton {
+  height: 60px;
+  width: 100px;
+  margin-left: 41%;
+  background-color: #764657;
+  color: white;
+  font-size: 1em;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4); }
+
+.graphLink {
+  color: #65C36E;
+  font-size: 1.5em;
+  margin-left: 85%;
+  text-decoration: none; }
+
+.graphStuff {
+  width: 70%;
+  height: 50px; }
+
+.key {
+  float: right;
+  border: 1px solid darkgray;
+  margin-right: 10%;
+  margin-top: 10%;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4); }
 
 /*# sourceMappingURL=main.css.map */

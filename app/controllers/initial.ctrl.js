@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("initialCtrl", function($scope, $routeParams, $window, $location, userFactory){
+app.controller("initialCtrl", function($scope, $routeParams, $window, $location, userFactory, $route){
 
     $scope.account = {
         email: "",
@@ -47,10 +47,11 @@ app.controller("initialCtrl", function($scope, $routeParams, $window, $location,
               console.log("currentUser logged in?", user);
               console.log("logged in t-f", $scope.isLoggedIn );
               $scope.$apply();
+              $route.reload();
             } else {
               $scope.isLoggedIn = false;
               console.log("user logged in?", $scope.isLoggedIn);
-              $window.location.href = "#!/login";
+              $window.location.href = "#!/home1";
             }
           });
         };

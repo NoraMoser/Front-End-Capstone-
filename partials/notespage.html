@@ -1,3 +1,7 @@
+
+<div class="headingDiv"><h1 class="headerStuff">Notes</h1></div>
+
+
 <ul class="navbarList">
     <li class="navbarItems"><a ng-href="#!/home1">Home</a></li>
     <li class="navbarItems"><a ng-href="#!/graph">Graph</a></li>
@@ -5,7 +9,12 @@
 
 
 <h4>Please enter any symptoms, side effects, or anything else you feel that the doctors should know.</h4>
-<textarea name="symptoms" id="symptomTracker" cols="55" rows="30"></textarea>
-<button ng-click="saveText()">Save</button>
-<button ng-click="notes()">Submit</button>
-<a href="#!/graph">Go to Graph</a>
+<textarea class="textArea" name="symptoms" id="symptomTracker" cols="55" rows="30"></textarea>
+<br>
+<div class="textButtons">
+<button class="saveNotesButton" ng-click="saveText()">Save</button>
+<button class="submitButton" ng-click="notes()">Submit</button>
+</div>
+<br>
+<hr>
+<a ng-click="timeStamp()" class="graphLink" href="#!/graph">Go to Graph</a>

@@ -4,7 +4,11 @@ app.controller("editCtrl", function($scope, $location, $routeParams, trialFactor
   
   $scope.task = "";
   $scope.textArea = "";
+  $scope.momentTime = "";
+
   
+  
+
   $scope.saveText = function(){
     $scope.textArea = document.getElementById("symptomTracker").value;
     console.log("$scope.textArea", $scope.textArea);
@@ -48,8 +52,20 @@ app.controller("editCtrl", function($scope, $location, $routeParams, trialFactor
     trialFactory.editTime($scope.task.id, $scope.task)
     .then((data) => {
       console.log("data for notes", data);
+      
     });
   };
+
+  $scope.timeStamp = function(){
+    $scope.momentTime = moment().format("YYYY MM DD");
+    $scope.task.date = $scope.momentTime;
+    trialFactory.editTime($scope.task.id, $scope.task)
+    .then((data) => {
+      console.log("data for moment", data);
+    });
+  };
+
+  
   
   
   
