@@ -1,10 +1,10 @@
-<h1>Exercise 3</h1>
+<div class="headingDiv"><h1 class="headerStuff">Exercise 3</h1></div>
 <ul class="navbarList">
         <li class="navbarItems"><a ng-href="#!/home1">Home</a></li>
         <li class="navbarItems"><a ng-href="#!/graph">Graph</a></li>
     </ul>
-    <video width="400" controls>
-        <source src="trialvid3.mp4" type="video/mp4">
+      <video class="video" width="165" controls>
+            <source src="trialvid3.mp4" type="video/mp4">
       </video>
       <br>
       <br>
@@ -12,11 +12,14 @@
       <br>
       <br>
       <hr>
-    <label>Timer: {{timerWithTimeout | hhmmss}}</label>
-    <button ng-click="startTimerWithTimeout()">Start Timer</button>
-    <button ng-click="stopTimerWithTimeout()">Stop Timer</button>    
-    <button ng-click="resetTimerWithTimeout()">Reset Timer</button>
-    <button ng-click="submitTime3()">Save</button>
-    <a ng-href="#!/notes/{{task.id}}">Next</a>
+      <div class="timer">
+            <label class="actualTimer">Timer: {{timerWithTimeout | hhmmss}}</label>
+            <br>
+            <button class="timerButtons" ng-click="startTimerWithTimeout()">Start Timer</button>
+            <button class="timerButtons" ng-click="stopTimerWithTimeout()">Stop Timer</button>    
+            <button class="timerButtons" ng-click="resetTimerWithTimeout()">Reset Timer</button>
+            </div>
+    <button class="saveButton" ng-click="submitTime3()">Save</button>
+    <a class="nextLink" ng-href="#!/notes/{{task.id}}">Next</a>
    
     

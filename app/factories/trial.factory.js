@@ -114,7 +114,17 @@ app.factory("trialFactory", function($q, $http, FBCreds, userFactory){
              .then(graph => resolve(getNote(graph.data)));
          });
      };
+
+     const getCurrentTime = function(obj){
+        return Object.keys(obj).map(key => obj[key].date);
+    };
+    const getDBCurrentTime = function(){
+        return $q (( resolve, reject) => {
+            $http.get(`${FBCreds.databaseURL}/graph.json`)
+            .then(graph => resolve(getCurrentTime(graph.data)));
+        });
+    };
      
     
-    return { addTime, getDBValues, getDBValues2, editTime, getAllTimes, getSingleTime, getDBValues3, getTimes3, getDBNotes, getNote};
+    return { getCurrentTime, getDBCurrentTime, addTime, getDBValues, getDBValues2, editTime, getAllTimes, getSingleTime, getDBValues3, getTimes3, getDBNotes, getNote};
 });

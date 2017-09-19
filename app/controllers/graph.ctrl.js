@@ -6,16 +6,19 @@ app.controller("graphCtrl", function($scope, $routeParams, trialFactory, userFac
     var user = userFactory.getCurrentUser();
     
     
+    var ugh = [1, 2, 3, 4, 5];
+    var current = [];
+    console.log("current check", current);
     $scope.task = {};
     
-    $scope.labels = ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5", "Week 6", "Week 7"];
+    // $scope.labels = current;
     $scope.series = ['Series A', 'Series B'];
     $scope.data = [];
     Chart.defaults.global.colors = [ '#fa97ff', '#01c3fe', '#56ca4a'  ];
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
-    $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }];
+    $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, {xAxisID: 'x-axis-1'}] ;
     
     $scope.options = {
         scales: {
@@ -24,9 +27,16 @@ app.controller("graphCtrl", function($scope, $routeParams, trialFactory, userFac
                     id: 'y-axis-1',
                     type: 'linear',
                     display: true,
-                    position: 'left'
-                },
+                    position: 'left',
+                }
                
+            ],
+            xAxes: [
+            {
+                id: 'x-axis-1',
+                display: true,
+                position: 'bottom'
+            }
             ]
         }
     };
@@ -45,6 +55,14 @@ app.controller("graphCtrl", function($scope, $routeParams, trialFactory, userFac
     trialFactory.getDBNotes()
     .then(notes => $scope.notes.push(notes));
     console.log("scope.notes", $scope.notes);
+
+    trialFactory.getDBCurrentTime()
+    .then(date => {
+        console.log("current times", date);
+        $scope.labels = date;
+        
+    });
+    console.log("scope.current", current);
 
     $scope.downloadPDF = () => {
         var docDefinition = {

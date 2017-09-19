@@ -1,14 +1,15 @@
-<h1>Graph</h1>
+<div class="headingDiv"><h1 class="headerStuff">Graph</h1></div>
 <ul class="navbarList">
         <li class="navbarItems"><a ng-href="#!/home1">Home</a></li>
         <li class="navbarItems"><a ng-href="#!/exercises">Exercises</a></li>
         <li class="navbarItems"><a ng-click="downloadPDF()" ng-href="#!/pdf">Download PDF</a></li>    
     </ul>
-
+<div class="graphStuff">
     <canvas id="line" class="chart chart-line" chart-data="data"
     chart-labels="labels" chart-series="series" chart-options="options"
     chart-dataset-override="datasetOverride" chart-click="onClick">
 </canvas>
+</div>
 
 <div class="key">
 <p>Exercise 1 = pink</p>
