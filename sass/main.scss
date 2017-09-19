@@ -1,6 +1,46 @@
 $primary-color: #65C36E;
 $secondary-color: #764657;
 $tertiary-color: #327638;
+$font-stack: 'Philosopher', sans-serif;
+
+h1, h2, h3, h4, h5, p {
+    font-family: $font-stack;
+}
+
+body {
+    background-color: lightgray;
+}
+
+//Login page
+
+
+.initialHeader {
+    text-align: center;
+    color: white;
+    font-size: 3em;
+    height: 350px;
+    margin-top: 0;
+    padding: 30px;
+    width: 100%;
+    background-color: $secondary-color;
+}
+
+.h3 {
+    font-size: 30px;
+    
+}
+
+.googleLogin {
+    margin-left: 40%;
+    margin-top: 2%;
+    
+}
+
+#google-login {
+    height: 55px;
+    width: 250px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .2);
+}
 
 
 // Navbar
@@ -39,6 +79,36 @@ $tertiary-color: #327638;
     height: 100%; /* Full height */
     position: fixed; /* Make it stick, even on scroll */
     overflow: auto; /* Enable scrolling if the sidenav has too much content */
+    background-color: $primary-color;
+}
+
+.homeNavbarItems {
+    text-decoration: none;
+    font-size: 3em;
+    font-family: $font-stack;
+    color: $secondary-color;
+    padding: 20px;
+    text-align: center;
+}
+
+.home-list {
+    margin-top: 30%;
+}
+
+.homeNavbarItems:hover {
+    background-color: $tertiary-color;
+    font-size: 3.4em;
+}
+
+.userImage {
+    height: 200px;
+    width: 200px;
+    border-radius: 30%;
+    box-shadow: 3px 1px 1px black;
+}
+
+.userDeets {
+    color: $secondary-color;
 }
 
 // Exercises

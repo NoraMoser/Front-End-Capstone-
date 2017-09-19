@@ -11,7 +11,7 @@ app.controller("graphCtrl", function($scope, $routeParams, trialFactory, userFac
     $scope.labels = ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5", "Week 6", "Week 7"];
     $scope.series = ['Series A', 'Series B'];
     $scope.data = [];
-    $scope.colours = [ 'yellow', 'purple', 'green'  ];
+    Chart.defaults.global.colors = [ '#fa97ff', '#01c3fe', '#56ca4a'  ];
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
