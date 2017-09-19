@@ -37,6 +37,11 @@ app.config(($routeProvider) => {
         controller: 'graphCtrl',
         resolve: {isAuth}        
     })
+    .when('/notes/:id', {
+        templateUrl: 'partials/notespage.html',
+        controller: 'editCtrl',
+        resolve: {isAuth}
+    })
     .when('/exercise2/:id', {
         templateUrl: 'partials/exercise2.html',
         controller: 'editCtrl',

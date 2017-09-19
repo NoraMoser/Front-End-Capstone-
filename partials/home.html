@@ -1,9 +1,9 @@
 <ul class="homeNavbarList">
-        <li class="homeNavbarItems"><a ng-href="#!/exercises" href="#">Exercises</a></li>
-        <li class="homeNavbarItems"><a ng-href="#!/graph">Graph</a></li>
-        <li class="homeNavbarItems"><a ng-click="logout()" ng-href="#/">Logout</a></li>            
+        <li class="home-list"><a class="homeNavbarItems" ng-href="#!/exercises" href="#">Exercises</a></li>
+        <li class="home-list"><a class="homeNavbarItems"ng-href="#!/graph">Graph</a></li>
+        <li class="home-list"><a class="homeNavbarItems"ng-click="logout()" ng-href="#/">Logout</a></li>            
     </ul>
-    <center ng-repeat="item in userDeets">
+    <center class="userDeets" ng-repeat="item in userDeets">
             <div id="userPic"><img class="userImage" ng-src={{item.userPhoto}}></div>
     
             <h1>Hello, {{item.userName}}:</h1>
