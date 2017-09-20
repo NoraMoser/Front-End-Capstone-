@@ -40,12 +40,13 @@ app.controller("editCtrl", function($scope, $location, $routeParams, trialFactor
     });
   };
 
-  $scope.saveText = function(){
-    $scope.textArea = document.getElementById("symptomTracker").value;
-    console.log("$scope.textArea", $scope.textArea);
-  };
+  // $scope.saveText = function(){
+  //   $scope.textArea = document.getElementById("symptomTracker").value;
+  //   console.log("$scope.textArea", $scope.textArea);
+  // };
 
   $scope.notes = function(){
+    $scope.textArea = document.getElementById("symptomTracker").value;
     // console.log("notes stuff", $scope.textArea.value);
     $scope.task.notes = $scope.textArea;
     console.log(".notes?", $scope.task.notes);

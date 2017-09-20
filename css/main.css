@@ -36,6 +36,16 @@ body {
   width: 250px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); }
 
+.logo {
+  height: 200px;
+  width: 200px;
+  float: left;
+  margin-top: 1px; }
+
+.cssSucks {
+  display: block;
+  margin-right: 14%; }
+
 .navbarList {
   list-style-type: none;
   margin: 0;
@@ -144,16 +154,8 @@ body {
   background-color: #764657;
   color: white;
   font-size: 1em;
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4); }
-
-.saveNotesButton {
-  height: 60px;
-  width: 100px;
-  margin-left: 41%;
-  background-color: #764657;
-  color: white;
-  font-size: 1em;
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4); }
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
+  margin-left: 45%; }
 
 .graphLink {
   color: #65C36E;

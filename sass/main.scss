@@ -55,6 +55,17 @@ body {
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .2);
 }
 
+.logo {
+    height: 200px;
+    width: 200px;
+    float: left;
+    margin-top: 1px;
+}
+
+.cssSucks {
+    display: block;
+    margin-right: 14%;    
+}
 
 // Navbar
 .navbarList {
@@ -187,18 +198,9 @@ body {
     color: white;
     font-size: 1em;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .4); 
+    margin-left: 45%;
 }
 
-.saveNotesButton {
-    height: 60px;
-    width: 100px;
-    margin-left: 41%;
-    background-color: $secondary-color;
-    color: white;
-    font-size: 1em;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .4); 
-    
-}
 
 .graphLink {
     color: $primary-color;
