@@ -37,7 +37,7 @@ app.controller("exerciseCtrl", function(trialFactory, $location, $scope, $routeP
 
     
     
-    
+    $scope.time = 0;
     $scope.timerWithTimeout = 0;
     $scope.stopped = false;
     
@@ -48,7 +48,7 @@ app.controller("exerciseCtrl", function(trialFactory, $location, $scope, $routeP
       }
       $scope.onTimeout = function(){
         $scope.timerWithTimeout++;
-        $scope.myTimeout = $timeout($scope.onTimeout);
+        $scope.myTimeout = $timeout($scope.onTimeout, 1000);
       };
       $scope.myTimeout = $timeout($scope.onTimeout);
     };
@@ -62,54 +62,53 @@ app.controller("exerciseCtrl", function(trialFactory, $location, $scope, $routeP
     $scope.stopTimerWithTimeout = function(){
       $scope.stopped = true;
       $timeout.cancel($scope.myTimeout);
-      // console.log("myTimeout", $scope.myTimeout.valueOf());
+      console.log("myTimeout", $scope.myTimeout.valueOf());
       // console.log($timeout.val);
-      let time = $scope.timerWithTimeout;
-      var sec_num = parseInt(time, 10); // don't forget the second param
-      var hours   = Math.floor(sec_num / 3600);
-      var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-      var seconds = sec_num - (hours * 3600) - (minutes * 60);
-    
-      if (hours   < 10) {hours   = "0"+hours;}
+      $scope.time = $scope.timerWithTimeout;
+      var sec_num = parseInt($scope.time); // don't forget the second param
+      // var hours   = Math.floor(sec_num / 3600);
+      var minutes = Math.floor(sec_num / 60);
+      var seconds = sec_num - (minutes * 60);
+      
+      // if (hours   < 10) {hours   = "0"+hours;}
       if (minutes < 10) {minutes = "0"+minutes;}
       if (seconds < 10) {seconds = "0"+seconds;}
-      time = hours+':'+minutes+':'+seconds;
-      console.log("timer value", time);
+      $scope.time = minutes+':'+seconds;
+      console.log("timer value", $scope.time);
       console.log("other timer value", $scope.timerWithTimeout);
     };
     // console.log($scope.timerWithTimeout.value);
-   
-   //timer with interval
-//    $scope.timerWithInterval = 0;
+    
+    //timer with interval
+    //    $scope.timerWithInterval = 0;
     $scope.startTimerWithInterval = function() {
-     $scope.timerWithInterval = 0;
-     if($scope.myInterval){
-       $interval.cancel($scope.myInterval);
-     }
-     $scope.onInterval = function(){
-         $scope.timerWithInterval++;
-     };
-     $scope.myInterval = $interval($scope.onInterval,1000);
-   };
-   
-   $scope.resetTimerWithInterval = function(){
-     $scope.timerWithInterval = 0;
-     $interval.cancel($scope.myInterval);
-   };
- });
-
- app.filter('hhmmss', function () {
-   return function (time) {
-     var sec_num = parseInt(time, 10); // don't forget the second param
-     var hours   = Math.floor(sec_num / 3600);
-     var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-     var seconds = sec_num - (hours * 3600) - (minutes * 60);
- 
-     if (hours   < 10) {hours   = "0"+hours;}
-     if (minutes < 10) {minutes = "0"+minutes;}
-     if (seconds < 10) {seconds = "0"+seconds;}
-     time = hours+':'+minutes+':'+seconds;
-     return time;
-   };
-   
- });
+      $scope.timerWithInterval = 0;
+      if($scope.myInterval){
+        $interval.cancel($scope.myInterval);
+      }
+      $scope.onInterval = function(){
+        $scope.timerWithInterval++;
+      };
+      $scope.myInterval = $interval($scope.onInterval,1000);
+    };
+    
+    $scope.resetTimerWithInterval = function(){
+      $scope.timerWithInterval = 0;
+      $interval.cancel($scope.myInterval);
+    };
+  });
+  
+  app.filter('mmss', function () {
+    return function (time) {
+      var sec_num = parseInt(time, 10); // don't forget the second param
+      // var hours   = Math.floor(sec_num / 3600);
+      var minutes = Math.floor(sec_num / 60);
+      var seconds = sec_num - (minutes * 60);
+      
+      // if (hours   < 10) {hours   = "0"+hours;}
+      if (minutes < 1) {minutes = "0"+minutes;}
+      if (seconds < 1) {seconds = "0"+seconds;}
+      time = minutes+':'+seconds;
+      return time;
+    };
+});
